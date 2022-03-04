@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
 def call(String name = 'human') {
-  echo "Hello, ${name}."
+	var date = new Date();
+	echo "Hello, ${name}, it's now ${date}"
 }
