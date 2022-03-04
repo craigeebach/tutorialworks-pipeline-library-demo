@@ -1,0 +1,80 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+group 'craig.jenkins.tutorial.gsl'
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs 'src'
+        }
+        resources {
+            srcDirs 'resources'
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs 'test/groovy'
+        }
+        resources {
+            srcDirs 'test/resources'
+        }
+    }
+
+    pipeline {
+        groovy {
+            srcDirs 'vars'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url 'https://repo.jenkins-ci.org/public'
+        
+    }
+}
+
+
+configurations {
+    pipelineCompile.extendsFrom compile
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.5.15'
+    // compile group: 'org.eclipse.hudson', name: 'hudson-core', version: '3.2.1'
+    // compile group: 'org.jenkins-ci.main', name: 'jenkins-core', version: '+'
+    // compile(group: 'org.jenkins-ci.plugins.workflow', name: 'workflow-step-api', version: '+') {
+    //     artifact {
+    //         name = 'workflow-step-api'
+    //         type = 'jar'
+    //     }
+    // }
+	// friggin eclipse
+	// compileOnly 'javax.servlet:servlet-api:2.5'
+	
+    testCompile 'junit:junit:4.12'
+    
+}
+
+// disabling all tests for now
+test {
+    exclude '**/*'
+}
+
+
+project.tasks.create('candidate', {
+
+})
+
+project.tasks.create('final', {
+
+})
+
+project.tasks.create('snapshot', {
+})
+
+project.tasks.create('publish', {
+
+})
