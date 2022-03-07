@@ -1,6 +1,9 @@
 
 
 def call(Map config=[:], Closure body) {
+	if (config.label == null) {
+		error("Missing agent label")
+	}
 	echo("Looking for node with label ${config.label}")
 	//node {
 	node (config.label) {
