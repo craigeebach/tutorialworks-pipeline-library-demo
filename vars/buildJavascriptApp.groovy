@@ -2,6 +2,7 @@
 
 def call(Map config=[:], Closure body) {
     //node ("controller") {
+	echo("Looking for jenkins-agent")
 	//node {
 	node ("jenkins-agent") {
         git url: "https://github.com/craigeebach/sample-nodejs"
