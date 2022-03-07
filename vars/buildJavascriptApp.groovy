@@ -2,7 +2,7 @@
 
 def call(Map config=[:], Closure body) {
     node {
-        git url: "https://github.com/werne2j/sample-nodejs"
+        git url: "https://github.com/craigeebach/sample-nodejs"
         stage("Install") {
             sh "npm install"
         }
@@ -12,7 +12,9 @@ def call(Map config=[:], Closure body) {
         stage("Deploy") {
             if (config.deploy) {
                 sh "npm publish"
-            }
+            } else {
+				echo "Not deploying"
+			}
         }
         body()
     }
