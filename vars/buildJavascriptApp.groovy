@@ -1,10 +1,9 @@
 
 
 def call(Map config=[:], Closure body) {
-	echo("Looking for controller")
+	echo("Looking for node with label ${config.label}")
 	//node {
-	//node ("jenkins-agent") {
-	node ("smith") {
+	node (config.label) {
         git url: "https://github.com/craigeebach/sample-nodejs"
         stage("Install") {
             sh "npm install"
