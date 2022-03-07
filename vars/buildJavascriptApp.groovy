@@ -1,7 +1,7 @@
 
 
 def call(Map config=[:], Closure body) {
-    node {
+    node ("builtin") {
         git url: "https://github.com/craigeebach/sample-nodejs"
         stage("Install") {
             sh "npm install"
